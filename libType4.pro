@@ -10,14 +10,20 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    libtype4.cpp
+    libtype4.cpp \
+    mws.cpp
 
 HEADERS += \
     libType4_global.h \
-    libtype4.h
+    libtype4.h \
+    mws.h \
+    structs_lib.h
 
 # Default rules for deployment.
 unix {
     target.path = /usr/lib
 }
 !isEmpty(target.path): INSTALLS += target
+
+FORMS += \
+    mws.ui

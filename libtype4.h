@@ -3,15 +3,36 @@
 
 #include "libType4_global.h"
 
-extern "C" {
-LIBTYPE4_EXPORT int getInt();
+#include <QtWidgets/QMdiArea>
+#include <QDialog>
+
+#include "mws.h"
+class MWS;
+
+extern "C"
+{
+  LIBTYPE4_EXPORT bool setPortname(QString name);
+  LIBTYPE4_EXPORT bool setNameDevice(QString name);
+  LIBTYPE4_EXPORT bool setModbusAdr(QString name);
+  LIBTYPE4_EXPORT bool setDevice(uint16_t mas[],uint32_t size);
+
+  LIBTYPE4_EXPORT bool dialogNEW(QMdiArea *mdiArea);
+  LIBTYPE4_EXPORT bool dialogDELETE();
 }
 
-class LIBTYPE4_EXPORT LibType4
+class  LIBTYPE4_EXPORT SettingsDialog : public QDialog
 {
+
 public:
-    LibType4();
-    int get();
+    explicit SettingsDialog(QMdiArea *mdiArea);
+    virtual ~SettingsDialog();
+public slots:
+    virtual void Changed();
+private:
+     MWS *m_settings = nullptr;
+Q_SIGNALS:
+   // void bottomChanged();
 };
+
 
 #endif // LIBTYPE4_H
