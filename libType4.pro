@@ -1,4 +1,4 @@
-QT += widgets
+QT += widgets printsupport
 
 TEMPLATE = lib
 DEFINES += LIBTYPE4_LIBRARY
@@ -11,12 +11,14 @@ CONFIG += c++11
 
 SOURCES += \
     libtype4.cpp \
-    mws.cpp
+    mws.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
     libType4_global.h \
     libtype4.h \
     mws.h \
+    qcustomplot.h \
     structs_lib.h
 
 # Default rules for deployment.
