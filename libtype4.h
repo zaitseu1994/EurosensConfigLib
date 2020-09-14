@@ -1,10 +1,11 @@
 #ifndef LIBTYPE4_H
 #define LIBTYPE4_H
-
 #include "libType4_global.h"
 
 #include <QtWidgets/QMdiArea>
 #include <QDialog>
+
+#define CountSet 100
 
 #include "mws.h"
 class MWS;

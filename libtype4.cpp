@@ -4,20 +4,31 @@
 #include "mws.h"
 #include "structs_lib.h"
 
-SettingsDialog *Settingdialog = NULL;
+int CountSetting  = 0;
+SettingsDialog *Settingdialog[CountSet] = {NULL};
 struct_Device DeviceSet;
 
 bool dialogNEW(QMdiArea *mdiArea)
 {
      bool answr =false;
-     Settingdialog = new SettingsDialog(mdiArea);
-     Settingdialog==NULL ? answr =  false : answr =  true ;
+     if( CountSetting<=CountSet)
+     {
+        Settingdialog[CountSetting] = new SettingsDialog(mdiArea);
+        Settingdialog[CountSetting]==NULL ? answr =  false : answr =  true ;
+        CountSetting++;
+     }
      return answr;
 }
 
 bool dialogDELETE()
 {
-     delete Settingdialog;
+     for(int i=0;i<CountSet;i++)
+     {
+         if(Settingdialog[i]!=NULL)
+         {
+             delete Settingdialog[i];
+         }
+     }
      return true;
 }
 
